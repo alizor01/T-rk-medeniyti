@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Otomatik İçerik</title></head>
+<body>
+<h1>Otomatik İçerik Akışı</h1>
+<div id="content"></div>
+<script>
+fetch('./data/content.json')
+  .then(r=>r.json())
+  .then(items=>{
+    let div=document.getElementById('content');
+    items.forEach(i=>{
+      let b=document.createElement('div');
+      b.innerHTML=`<h3>${i.title}</h3><p>${i.summary}</p><hr>`;
+      div.appendChild(b);
+    });
+});
+</script>
+</body>
+</html>
